@@ -56,9 +56,4 @@ class OrdersController < ApplicationController
     order
   end
 
-  # def enhanced_line_items
-  #   @enhanced_line_items ||= @order.line_items.map {|item| { product: Product.where(id: item.product_id), quantity: item.quantity } }
-  # end
-  # helper_method :enhanced_line_items
-
 end
