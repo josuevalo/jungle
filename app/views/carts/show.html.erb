@@ -8,7 +8,8 @@
   <h4 class="alert-heading">Whoops!</h4>
   <p>It looks like your cart is empty! Let's go back and fill it up!</p>
   <hr>
-  <p class="mb-0"> <%= link_to 'Home', :root %> </p>
+  
+<%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 </div>
 
 <% else %>
