@@ -1,8 +1,9 @@
 class Admin::CategoriesController < ApplicationController
 
-
   http_basic_authenticate_with :name => ENV['HTTP_NAME'], :password => ENV['HTTP_PASSWORD'] 
-  
+
+  before_filter :authorize
+
   def index
     @categories = Category.all
   end
