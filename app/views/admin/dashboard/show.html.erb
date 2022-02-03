@@ -1,4 +1,22 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
-<p> Product Count:<%= @product_count %></p>
-<p> Catergoy Count:<%= @category_count %></p>
+<h1>Admin » Dashboard</h1>
+<div class="well">
+    <a class="btn btn-info" href="/admin/products/new">All Products</a>
+  </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Total Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Product</th>
+      <td><%= @product_count %></td>
+    </tr>
+    <tr>
+      <th scope="row">Categories</th>
+      <td><%= @category_count %></td>
+    </tr>
+  </tbody>
+</table>
