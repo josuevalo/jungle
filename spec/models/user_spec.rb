@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Validations for Users' do
+  describe 'Validations' do
 
     it 'saves correctly having all valid fields' do
       @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
@@ -55,6 +55,34 @@ RSpec.describe User, type: :model do
       @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
       @user2 = User.create(password: 'jungle', password_confirmation: 'jungle', email: '  junglebook@jungle.com  ', first_name: 'Bal', last_name: 'oo')
       expect(@user2.errors.full_messages).to include "Email is invalid"
+    end
+
+
+  end
+
+  describe '.authenticate_with_credentials' do
+    it 'should return a user if valid email and password are entered' do
+      @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
+      @user2 = User.authenticate_with_credentials(@user.email, @user.password)
+      expect(@user2.to_json).to eq(@user.to_json)
+    end
+
+    it 'does not return a user if invalid email and password are entered' do
+      @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
+      @user2 = User.authenticate_with_credentials('thisiswrong', @user.password)
+      expect(@user2.to_json).not_to eql(@user.to_json)
+    end
+
+    it 'should return a user even if whitespace is around email' do
+      @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
+      @user2 = User.authenticate_with_credentials('  junglebook@jungle.com  ', @user.password)
+      expect(@user2.to_json).to eq(@user.to_json)
+    end
+
+    it 'should return a user even if email is typed in a different case' do
+      @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
+      @user2 = User.authenticate_with_credentials('JungleBook@JUNgle.com', @user.password)
+      expect(@user2.to_json).to eq(@user.to_json)
     end
 
   end
