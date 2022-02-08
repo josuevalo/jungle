@@ -51,6 +51,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
+    it 'cannot create user because email is not unique (space around test)' do
+      @user = User.create(password: 'jungle', password_confirmation: 'jungle', email: 'junglebook@jungle.com', first_name: 'Bal', last_name: 'oo')
+      @user2 = User.create(password: 'jungle', password_confirmation: 'jungle', email: '  junglebook@jungle.com  ', first_name: 'Bal', last_name: 'oo')
+      expect(@user2.errors.full_messages).to include "Email is invalid"
+    end
+
   end
 end
 
