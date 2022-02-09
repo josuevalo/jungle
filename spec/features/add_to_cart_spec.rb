@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigates to home page then clicks on one for the products to navigate to product detail page", type: :feature, js: true do
+RSpec.feature "Visitor can click the 'Add to Cart' button for a product on the home page and in doing so their cart increases by one", type: :feature, js: true do
 
   # SETUP
   before :each do
@@ -17,15 +17,16 @@ RSpec.feature "Visitor navigates to home page then clicks on one for the product
     end
   end
 
-  scenario "They see a product detail page" do
+  scenario "They see a in cart number increment by 1" do
     visit root_path
 
-    find('img', match: :first).click
+    # find('img', match: :first).click
+    click_button 'Add', match: :first
     sleep 5
     # commented out b/c it's for debugging only
-    # save_and_open_screenshot
+    save_and_open_screenshot
 
-    expect(page).to have_css 'section.products-show'
+    expect(page).to have_text "My Cart (1)"
   end
 
 
