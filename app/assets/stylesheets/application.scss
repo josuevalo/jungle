@@ -15,3 +15,16 @@ body {
 form.button_to {
   display: inline;
 }
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} 
