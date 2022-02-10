@@ -6,7 +6,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 !["Screenshot of Main Screen Showcasing the products"](https://github.com/josuevalo/jungle/blob/master/docs/jungle-main.png?raw=true)
 
-!["Screenshot of Main Screen Showcasing the products"]()
+!["Screenshot of Admin Add Product Page"](https://github.com/josuevalo/jungle/blob/master/docs/jungle-add.png?raw=true)
 
 !["Screenshot of Order Confirmation Screen"](https://github.com/josuevalo/jungle/blob/master/docs/jungle-order.png?raw=true)
 
